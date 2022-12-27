@@ -1,9 +1,7 @@
 package com.jpadatatest.demo;
 
-import com.jpadatatest.demo.entity.BookDigital;
-import com.jpadatatest.demo.entity.BookOld;
-import com.jpadatatest.demo.entity.ChirsmathGift;
-import com.jpadatatest.demo.entity.EmployeeTechnical;
+import com.jpadatatest.demo.entity.*;
+import com.jpadatatest.demo.repository.ContractRepository;
 import com.jpadatatest.demo.repository.EmployeeRepository;
 import com.jpadatatest.demo.service.GiftService;
 import com.jpadatatest.demo.service.ProductService;
@@ -22,6 +20,8 @@ class DemoApplicationTests {
     private GiftService giftService ;
     @Autowired
     private EmployeeRepository employeeRepository;
+    @Autowired
+    private ContractRepository contractRepository;
 
     @Test
     void contextLoads() {
@@ -62,6 +62,14 @@ class DemoApplicationTests {
         emp.setPart("it");
         employeeRepository.save(emp);
 
+    }
+    @Test
+    void addContract(){
+        ShilaContract contract  = new ShilaContract();
+        contract.setPercent(20L);
+        contract.setExpTime(LocalDate.now());
+        contract.setName("shilaFirstYear");
+        contractRepository.save(contract);
     }
 
 
